@@ -1,22 +1,5 @@
 version: "3"
 services:
- phala-node:
-   image: ${NODE_IMAGE}
-   container_name: phala-node
-   hostname: phala-node
-   ports:
-    - "9933:9933"
-    - "9934:9934"
-    - "9944:9944"
-    - "9945:9945"
-    - "30333:30333"
-    - "30334:30334"
-   environment:
-    - NODE_NAME=${NODE_NAME}
-    - NODE_ROLE=MINER
-   volumes:
-    - ${NODE_VOLUMES}
-
  phala-pruntime:
    image: ${PRUNTIME_IMAGE}
    container_name: phala-pruntime
@@ -44,8 +27,8 @@ services:
       "-r",
       "--parachain",
       "--mnemonic=${MNEMONIC}",
-      "--substrate-ws-endpoint=ws://phala-node:9945",
-      "--collator-ws-endpoint=ws://phala-node:9944",
+      "--substrate-ws-endpoint=ws://10.96.89.204:9945",
+      "--collator-ws-endpoint=ws://10.96.89.204:9944",
       "--pruntime-endpoint=http://phala-pruntime:8000",
       "--operator=${OPERATOR}",
       "--fetch-blocks=512",

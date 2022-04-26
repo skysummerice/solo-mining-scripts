@@ -18,7 +18,6 @@ services:
    container_name: phala-pherry
    hostname: phala-pherry
    depends_on:
-    - phala-node
     - phala-pruntime
    restart: always
    entrypoint:
